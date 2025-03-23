@@ -1,0 +1,59 @@
+<!--<div class="weather-container">
+  <h2>Weather App</h2>
+  <input #addressInput type="text" placeholder="Enter address" />
+  <button (click)="getWeather()">Get Weather</button>
+
+  <div *ngIf="weatherData">
+    <h3>Weather for {{ weatherData.location }}</h3>
+    <p>Temperature: {{ weatherData.temperature }}°C</p>
+    <p>Condition: {{ weatherData.condition }}</p>
+    <p *ngIf="isCached">From Cache</p>
+  </div>
+</div> -->
+
+
+<div class="weather-container">
+  <h2>Weather App</h2>
+
+  <!-- Address Input -->
+  <input #addressInput type="text" placeholder="Enter address" [(ngModel)]="address" />
+  <button (click)="getWeather()">Get Weather</button>
+  <button (click)="clearAddress()" [disabled]="!address">Clear</button>
+
+  <div *ngIf="errorMessage" class="error">
+    {{ errorMessage }}
+  </div>
+
+  <!-- Weather Data Display -->
+  <div *ngIf="weatherData" class="weather-details">
+    <h3>Weather for: {{ addressText}}</h3>
+
+    <!-- Cache Indicator -->
+    <p class="indicator" [ngClass]="{'cached': this.weatherData.fromCache, 'not-cached': !this.weatherData.fromCache}">
+      {{ this.weatherData.fromCache ? 'Data from Cache' : 'Live Data Retrieved' }}
+    </p>
+
+    <!-- Current Temperature & Condition -->
+    <p><strong>Current Temperature:</strong> {{weatherData.data.temp}} °C</p>
+    <p><strong>Condition:</strong> {{ weatherData.data.description }}</p>
+
+    <!-- High & Low Temperatures -->
+    <p><strong>High:</strong> {{ weatherData.data.high  }}°C </p>
+    <p>
+      <strong>Low:</strong> {{ weatherData.data.low }}°C
+    </p>
+
+    <!-- Extended Forecast -->
+   <!-- <div *ngIf="extendedForecast">
+      <h4>Extended Forecast</h4>
+      <ul class="forecast-list">
+        <li *ngFor="let forecast of extendedForecast">
+          <span class="date">{{ forecast.date | date:'shortDate' }}</span> -
+          <span class="temp">{{ forecast.temp }}°C</span> -
+          <span class="condition">{{ forecast.condition }}</span>
+        </li>
+      </ul>
+    </div> -->
+  </div>
+</div>
+
