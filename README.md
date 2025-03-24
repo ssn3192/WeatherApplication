@@ -20,6 +20,12 @@ This weather application provides real-time weather information for a specified 
 3. Configure your Google Maps API key
 4. Run ng serve. The app will open as http://localhost:4200
 
+![image](https://github.com/user-attachments/assets/06ddc867-e584-4262-87ff-f9321367481a)
+
+![image](https://github.com/user-attachments/assets/315895ce-b466-4928-93bb-c166ac0328e0)
+
+![image](https://github.com/user-attachments/assets/c6c7511e-501f-4297-aa3a-c986cdd6f3ce)
+
 # Setup Backend:
 1. Navigate to backend folder and run mvn install if using Maven or gradle build for Gradle
 2. Configure environment variables for OpenWeather API key and Google Maps API key if required
