@@ -68,23 +68,7 @@
     background-color: #dc3545;
     padding: 5px 10px;
   }
-  
-  /* Forecast List */
-  .forecast-list {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .forecast-list li {
-    background: #e9ecef;
-    padding: 8px;
-    border-radius: 5px;
-    margin: 5px 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
+
   .date {
     font-weight: bold;
   }

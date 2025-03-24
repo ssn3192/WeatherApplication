@@ -23,17 +23,6 @@ public class ExtendedWeatherData {
     ) {}
 
     public static ExtendedWeatherData fromExtendedWeatherResponse(ExtendedWeatherResponse response) {
-       /* List<WeatherForecastData> forecastDataList = response.getList().stream()
-                .map(forecast -> WeatherForecastData.builder()
-                        .dt(new Date(forecast.dt() * 1000))
-                        .temp_min(forecast.main().temp_min())
-                        .temp_max(forecast.main().temp_max())
-                        .build())
-                .toList();
-        return ExtendedWeatherData.builder()
-                .forecasts(forecastDataList)
-                .build(); */
-
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Set<String> seenDates = new HashSet<>();
         List<WeatherForecastData> filteredForecasts = new ArrayList<>();

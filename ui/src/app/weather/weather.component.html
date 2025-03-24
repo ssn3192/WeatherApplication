@@ -20,15 +20,24 @@
       {{ this.weatherData.fromCache ? 'Data from Cache' : 'Live Data Retrieved' }}
     </p>
 
-    <!-- Current Temperature & Condition -->
-    <p><strong>Current Temperature:</strong> {{weatherData.data.temp}} °C</p>
-    <p><strong>Condition:</strong> {{ weatherData.data.description }}</p>
-
-    <!-- High & Low Temperatures -->
-    <p><strong>High:</strong> {{ weatherData.data.high  }}°C </p>
-    <p>
-      <strong>Low:</strong> {{ weatherData.data.low }}°C
-    </p>
+    <table class="forecast-table">
+      <thead>
+        <tr>
+          <th>Current Temperature</th>
+          <th>Condition</th>
+          <th>High Temp (°C)</th>
+          <th>Low Temp (°C)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ weatherData.data.temp }}</td>
+          <td>{{ weatherData.data.description }}</td>
+          <td>{{ weatherData.data.high }}</td>
+          <td>{{ weatherData.data.low }}</td>
+        </tr>
+      </tbody>
+    </table>
 
      <!-- Extended Forecast Table -->
      <div *ngIf="weatherData.data.extendedWeatherData">
