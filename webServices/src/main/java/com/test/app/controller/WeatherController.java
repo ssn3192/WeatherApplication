@@ -46,4 +46,10 @@ public class WeatherController {
                     .body(errorResponse);
         }
     }
+
+    /*
+        get extended forecast weather
+     */
+    //@GetMapping
+
 }

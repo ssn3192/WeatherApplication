@@ -1,6 +1,6 @@
 package com.test.app.service;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.test.app.model.ExtendedWeatherData;
 import com.test.app.model.WeatherForAddressData;
 import com.test.app.model.WeatherForAddressResponse;
 import com.test.app.service.exception.ServiceException;
@@ -8,7 +8,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.CacheManager;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -55,7 +54,9 @@ public class CachedWeatherService {
             }
             log.info("Trying to fetch from actual data source");
             var actualWeather = delegate.getWeatherByZip(zipCodeOpt.get());
-            var weatherData = WeatherForAddressData.fromWeatherResponse(actualWeather);
+            var extendedWeather = delegate.getExtendedWetherByZip(zipCodeOpt.get());
+            var extendedWeatherData = ExtendedWeatherData.fromExtendedWeatherResponse(extendedWeather);
+            var weatherData = WeatherForAddressData.fromWeatherResponse(actualWeather, extendedWeatherData);
             if(Objects.nonNull(cache)) {
                 // store zip code -> json response data
                 cache.put(zipCodeOpt.get(), weatherData);

@@ -1,17 +1,3 @@
-<!--<div class="weather-container">
-  <h2>Weather App</h2>
-  <input #addressInput type="text" placeholder="Enter address" />
-  <button (click)="getWeather()">Get Weather</button>
-
-  <div *ngIf="weatherData">
-    <h3>Weather for {{ weatherData.location }}</h3>
-    <p>Temperature: {{ weatherData.temperature }}°C</p>
-    <p>Condition: {{ weatherData.condition }}</p>
-    <p *ngIf="isCached">From Cache</p>
-  </div>
-</div> -->
-
-
 <div class="weather-container">
   <h2>Weather App</h2>
 
@@ -20,9 +6,10 @@
   <button (click)="getWeather()">Get Weather</button>
   <button (click)="clearAddress()" [disabled]="!address">Clear</button>
 
-  <div *ngIf="errorMessage" class="error">
-    {{ errorMessage }}
-  </div>
+ <!-- Error Message Display -->
+ <div *ngIf="errorMessage" class="error">
+  {{ errorMessage }}
+</div>
 
   <!-- Weather Data Display -->
   <div *ngIf="weatherData" class="weather-details">
@@ -43,17 +30,26 @@
       <strong>Low:</strong> {{ weatherData.data.low }}°C
     </p>
 
-    <!-- Extended Forecast -->
-   <!-- <div *ngIf="extendedForecast">
-      <h4>Extended Forecast</h4>
-      <ul class="forecast-list">
-        <li *ngFor="let forecast of extendedForecast">
-          <span class="date">{{ forecast.date | date:'shortDate' }}</span> -
-          <span class="temp">{{ forecast.temp }}°C</span> -
-          <span class="condition">{{ forecast.condition }}</span>
-        </li>
-      </ul>
-    </div> -->
+     <!-- Extended Forecast Table -->
+     <div *ngIf="weatherData.data.extendedWeatherData">
+      <h3>Extended Forecast</h3>
+      <table class="forecast-table">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Min Temp (°C)</th>
+            <th>Max Temp (°C)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let forecast of weatherData.data.extendedWeatherData.forecasts">
+            <td>{{ forecast.dt | date:'shortDate' }}</td>
+            <td>{{ forecast.temp_min }}</td>
+            <td>{{ forecast.temp_max }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
 

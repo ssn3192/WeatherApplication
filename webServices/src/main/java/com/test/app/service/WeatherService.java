@@ -2,6 +2,7 @@ package com.test.app.service;
 
 import com.test.app.config.GeoCodeAPIConfig;
 import com.test.app.config.WeatherConfig;
+import com.test.app.model.ExtendedWeatherResponse;
 import com.test.app.model.WeatherResponse;
 import com.test.app.service.exception.ServiceException;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -33,5 +34,23 @@ public class WeatherService {
         }catch (Exception e) {
             throw new ServiceException(String.format("Error occurred while fetching weather details for zip [%s]", zipCode), e);
         }
+    }
+
+    //provided extended weather for 5 days
+    public ExtendedWeatherResponse getExtendedWetherByZip(String zipCode){
+        try {
+            // Build the URL for OpenWeather API (5-day forecast)
+            UriComponentsBuilder weatherUriBuilder = UriComponentsBuilder.fromUriString(weatherConfig.getBaseUrl().concat("/forecast"))
+                    .queryParam("zip", zipCode)
+                    .queryParam("units", "imperial")  // For Fahrenheit
+                    .queryParam("appid", weatherConfig.getKey()); // API key
+
+            // Call the API and return the response mapped to ExtendedWeatherResponse
+            return httpClient.getForEntity(weatherUriBuilder.toUriString(), ExtendedWeatherResponse.class)
+                    .getBody();
+        } catch (Exception e) {
+            throw new ServiceException(String.format("Error occurred while fetching extended weather details for zip [%s]", zipCode), e);
+        }
+
     }
 }

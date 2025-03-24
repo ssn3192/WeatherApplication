@@ -17,14 +17,5 @@ export class WeatherService {
    getWeatherByAddress(address: string): Observable<WeatherForAddressResponse> {
     const params = new HttpParams().set('address', address);
     return this.http.get<WeatherForAddressResponse>(this.apiUrl, { params });
-  }
-
-  /**
-   * Get extended weather forecast for a given address
-   * @param address User inputted address string
-   */
- // getExtendedForecast(address: string): Observable<any> {
-   // return this.http.get<any>(`${this.baseUrl}/forecast?address=${encodeURIComponent(address)}`);
-  //}
+  } 
 }
-

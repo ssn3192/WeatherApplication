@@ -7,6 +7,13 @@
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     text-align: center;
   }
+
+  .error {
+    color: red;
+    font-weight: bold;
+    margin-top: 10px;
+    text-align: center; /* Ensures it's centered */
+  }
   
   h2, h3, h4 {
     color: #333;
@@ -90,3 +97,19 @@
     font-style: italic;
   }
   
+
+  .forecast-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .forecast-table th, .forecast-table td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+  }
+  
+  .forecast-table th {
+    background-color: #f4f4f4;
+  }

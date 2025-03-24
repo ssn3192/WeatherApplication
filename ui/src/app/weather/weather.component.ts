@@ -70,16 +70,5 @@ export class WeatherComponent implements AfterViewInit {
     this.weatherData = null;
     this.errorMessage = '';
   }
-
- /* getExtendedForecast() {
-    this.weatherService.getExtendedForecast(this.address).subscribe((data: any) => {
-      this.extendedForecast = data.list.slice(0, 5).map((forecast: any) => ({
-        date: forecast.dt_txt,
-        temp: forecast.main.temp,
-        condition: forecast.weather[0].description
-      }));
-    });
-  } */
-
   
 }
